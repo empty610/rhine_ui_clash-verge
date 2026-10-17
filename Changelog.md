@@ -21,6 +21,7 @@
 <details>
 <summary><strong> 🚀 优化改进 </strong></summary>
 
+- 优化 Rhine Edition 首页圆盘的光影动画，并显示实时上下行速度
 - 新增 Rhine Edition 页面切换时的轻微淡出淡入动画，并遵循系统的减少动态效果设置
 
 **🖥️ Windows**

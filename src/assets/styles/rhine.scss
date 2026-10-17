@@ -126,7 +126,23 @@ button:focus-visible, [role="button"]:focus-visible, a:focus-visible,
 .rhine-overview p { color: var(--rhine-muted); font-size: 12px; margin: 0 0 24px; }
 .rhine-overview-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 .rhine-core-status { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--rhine-muted); i { width: 5px; height: 5px; background: var(--rhine-muted); } i[data-running="true"] { background: #6e8961; } }
-.rhine-schematic { flex: 0 0 210px; color: var(--rhine-muted); text-align: center; svg { display: block; width: 100%; height: 180px; margin-bottom: 8px; } span { font: 8px Consolas, monospace; letter-spacing: 1.4px; } }
+.rhine-schematic { flex: 0 0 210px; color: var(--rhine-muted); text-align: center; span { font: 8px Consolas, monospace; letter-spacing: 1.4px; } }
+.rhine-signal-display {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 8px;
+  svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .rhine-signal-readout, .rhine-signal-crt { position: absolute; inset: 0; pointer-events: none; }
+}
+.rhine-signal-readout {
+  font-family: 'Courier New', monospace;
+  font-variant-numeric: tabular-nums;
+  .rhine-signal-upload { fill: #f8f8ed; font-weight: 700; letter-spacing: -2px; filter: url(#rhine-signal-chromatic); }
+  .rhine-signal-upload-unit { fill: #e4eee7; font-size: 10px; letter-spacing: .3px; }
+  .rhine-signal-download { fill: #eb6946; filter: url(#rhine-signal-edge-glow); }
+  .rhine-signal-download-unit { fill: #e58b70; font-size: 10px; letter-spacing: .3px; }
+}
 .rhine-schematic .rhine-signal-motion { animation-play-state: paused; }
 .rhine-schematic[data-motion="running"] .rhine-signal-motion { animation-play-state: running; }
 .rhine-route-loading { padding: 30px; color: var(--rhine-muted); font-size: 13px; }
@@ -147,7 +163,7 @@ button:focus-visible, [role="button"]:focus-visible, a:focus-visible,
 @media (max-width: 850px) {
   .layout.layout .layout-content__left { flex-basis: 180px; width: 180px; }
   .rhine-schematic { flex-basis: 135px; }
-  .rhine-schematic svg { height: 120px; }
+  .rhine-signal-display { width: 120px; height: 120px; }
   .rhine-schematic span { font-size: 6px; }
   .base-page > header { padding: 0 18px; }
   .base-page .base-container > section .base-content { width: calc(100% - 32px); }
