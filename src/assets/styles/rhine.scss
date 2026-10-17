@@ -1,0 +1,173 @@
+:root {
+  view-transition-name: none;
+  --rhine-bg: #eeeee6;
+  --rhine-panel: #f6f5ef;
+  --rhine-ink: #292a26;
+  --rhine-muted: #73746b;
+  --rhine-line: #d5d5c9;
+  --rhine-accent: #c7a169;
+  --rhine-active: #e5dcc8;
+}
+
+:root[data-rhine-theme="dark"] {
+  --rhine-bg: #20221d;
+  --rhine-panel: #272922;
+  --rhine-ink: #e5e3d8;
+  --rhine-muted: #aaa99b;
+  --rhine-line: #44473b;
+  --rhine-accent: #d7b578;
+  --rhine-active: #454231;
+}
+
+body { color: var(--rhine-ink); }
+button:focus-visible, [role="button"]:focus-visible, a:focus-visible,
+.MuiButtonBase-root.Mui-focusVisible {
+  outline: 2px solid var(--primary-main);
+  outline-offset: -3px;
+}
+
+.layout.layout {
+  background: var(--rhine-bg);
+  border-radius: 0;
+  .layout-content__left {
+    flex: 0 0 214px;
+    width: 214px;
+    background: var(--rhine-panel);
+    border-right: 1px solid var(--rhine-line);
+    padding-bottom: 0;
+    .the-logo {
+      flex: 0 0 160px;
+      height: 160px;
+      margin: 0;
+      padding: 25px 22px;
+      gap: 13px;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    .the-menu { flex: 1 1 auto; padding: 0 12px; }
+    .the-traffic {
+      flex: 0 0 94px;
+      padding-top: 12px;
+      border-top: 1px solid var(--rhine-line);
+      > div { padding: 0 22px; }
+    }
+  }
+  .layout-content__right { min-width: 0; }
+  .layout-content__right .the-content { top: 0; right: 0; view-transition-name: rhine-page; }
+  .the_titlebar { background: var(--rhine-panel); }
+}
+
+.rhine-brand-mark {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 48px;
+  color: var(--rhine-ink);
+  svg { display: block; stroke: currentColor; stroke-width: 3; }
+  .rhine-brand-underline { stroke: var(--rhine-accent); stroke-width: 4; }
+}
+.rhine-brand-copy {
+  strong { display: block; font: 650 25px/.95 'Segoe UI', sans-serif; letter-spacing: -1px; }
+  > span { display: block; font-size: 8px; letter-spacing: 1.6px; margin-top: 12px; color: var(--rhine-muted); }
+}
+.rhine-nav-label { display: flex; justify-content: space-between; margin: 0 22px 12px; padding-bottom: 10px; border-bottom: 1px solid var(--rhine-line); font: 9px/1.2 Consolas, monospace; letter-spacing: 1.2px; color: var(--rhine-muted); }
+.rhine-nav-item.MuiListItemButton-root {
+  padding: 10px 10px;
+  margin: 2px 0;
+  gap: 9px;
+  border-left: 2px solid transparent;
+  min-height: 56px;
+  border-radius: 0;
+  .MuiListItemIcon-root { display: none; min-width: 0; color: inherit; }
+  .MuiListItemText-root { margin: 0; }
+  .MuiListItemText-primary { font-size: 14px; font-weight: 500; color: var(--rhine-ink); }
+  .MuiListItemText-secondary { font-size: 8px; letter-spacing: 1.1px; margin-top: 3px; color: var(--rhine-muted); }
+  &.Mui-selected, &.Mui-selected:hover { background: var(--rhine-active); border-left-color: var(--primary-main); }
+  &:hover { background: var(--rhine-bg); }
+}
+.rhine-nav-number { font: 10px Consolas, monospace; align-self: flex-start; padding-top: 4px; color: var(--rhine-muted); }
+.rhine-nav-indicator { font-size: 17px; visibility: hidden; }
+.Mui-selected .rhine-nav-indicator { visibility: visible; }
+.rhine-nav-item[data-icons="colorful"] {
+  .MuiListItemIcon-root { display: flex; svg { width: 22px; height: 22px; } }
+  .rhine-nav-number { display: none; }
+}
+.rhine-sidebar-footer { display: flex; justify-content: space-between; padding-top: 12px !important; font: 8px Consolas, monospace; letter-spacing: 1px; color: var(--rhine-muted); }
+
+.layout.layout--nav-collapsed {
+  --layout-nav-item-radius: 2px;
+  .rhine-brand-copy, .rhine-nav-label, .rhine-nav-number, .rhine-nav-indicator { display: none; }
+  .layout-content__left .the-logo > .rhine-brand-mark { flex-basis: 32px; width: 32px !important; height: 38.4px !important; }
+  .layout-content__left .the-logo > .rhine-brand-mark > svg:last-child { display: block !important; }
+}
+
+.base-page {
+  > header { flex-basis: 90px; padding: 0 26px; gap: 12px; background: var(--rhine-panel); border-bottom: 1px solid var(--rhine-line); }
+  .base-container { min-height: 0; flex: 1; background: var(--rhine-bg); }
+  .base-container > section { padding: 22px 0; }
+  .base-container > section .base-content { width: calc(100% - 48px); }
+}
+.rhine-page-title { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.rhine-page-number { font: 300 42px/1 'Segoe UI', sans-serif; color: var(--rhine-accent); letter-spacing: -2px; }
+.rhine-eyebrow { display: block; font: 9px/1.5 Consolas, monospace; letter-spacing: 1.5px; color: var(--rhine-muted); }
+.rhine-page-title h1 { margin-top: 3px; }
+.rhine-section-label { display: flex; justify-content: space-between; font: 9px/1.5 Consolas, monospace; letter-spacing: 1.4px; color: var(--rhine-muted); margin: 22px 0 10px; }
+.rhine-card { height: 100%; display: flex; flex-direction: column; border: 1px solid var(--rhine-line); background: var(--rhine-panel); box-sizing: border-box; }
+.rhine-card-heading { display: flex; align-items: center; gap: 10px; padding: 9px 16px; min-height: 30px; border-bottom: 1px solid var(--rhine-line); }
+.rhine-card-icon { display: flex; color: var(--rhine-muted); svg { width: 18px; height: 18px; } }
+.rhine-home-grid .MuiPaper-root { border-radius: 2px; }
+.rhine-stat.MuiPaper-root { background: transparent; border: 0; border-left: 1px solid var(--rhine-line); border-radius: 0; }
+.rhine-stat > div:first-child { background: transparent; border-radius: 0; color: var(--rhine-muted); }
+.rhine-stat .MuiTypography-body1 { font: 500 20px/1.4 Consolas, monospace; color: var(--rhine-ink); }
+
+.rhine-overview { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 2px solid var(--rhine-ink); border-bottom: 1px solid var(--rhine-line); padding: 22px 0; }
+.rhine-overview-copy { flex: 1; min-width: 0; }
+.rhine-overview h2 { font-size: clamp(25px, 3vw, 35px); font-weight: 500; letter-spacing: 1px; line-height: 1.4; margin: 12px 0 8px; }
+.rhine-overview p { color: var(--rhine-muted); font-size: 12px; margin: 0 0 24px; }
+.rhine-overview-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.rhine-core-status { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--rhine-muted); i { width: 5px; height: 5px; background: var(--rhine-muted); } i[data-running="true"] { background: #6e8961; } }
+.rhine-schematic { flex: 0 0 210px; color: var(--rhine-muted); text-align: center; svg { display: block; width: 100%; height: 180px; margin-bottom: 8px; } span { font: 8px Consolas, monospace; letter-spacing: 1.4px; } }
+.rhine-schematic .rhine-signal-motion { animation-play-state: paused; }
+.rhine-schematic[data-motion="running"] .rhine-signal-motion { animation-play-state: running; }
+.rhine-route-loading { padding: 30px; color: var(--rhine-muted); font-size: 13px; }
+
+::view-transition { pointer-events: none; }
+::view-transition-group(rhine-page) { animation: none; }
+::view-transition-old(rhine-page) {
+  animation: rhine-page-out 90ms ease-out both;
+  mix-blend-mode: normal;
+}
+::view-transition-new(rhine-page) {
+  animation: rhine-page-in 140ms ease-out 60ms both;
+  mix-blend-mode: normal;
+}
+@keyframes rhine-page-out { to { opacity: 0; } }
+@keyframes rhine-page-in { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 850px) {
+  .layout.layout .layout-content__left { flex-basis: 180px; width: 180px; }
+  .rhine-schematic { flex-basis: 135px; }
+  .rhine-schematic svg { height: 120px; }
+  .rhine-schematic span { font-size: 6px; }
+  .base-page > header { padding: 0 18px; }
+  .base-page .base-container > section .base-content { width: calc(100% - 32px); }
+}
+@media (max-width: 650px) {
+  .layout.layout .layout-content__left { flex-basis: 150px; width: 150px; }
+  .layout.layout .layout-content__left .the-logo { padding: 24px 15px; gap: 8px; }
+  .rhine-brand-copy strong { font-size: 20px; }
+  .rhine-brand-copy > span { font-size: 6px; }
+  .rhine-brand-mark { flex-basis: 32px; width: 32px; height: 38.4px; }
+  .rhine-nav-label { margin-inline: 15px; font-size: 7px; }
+  .rhine-schematic { display: none; }
+  .rhine-overview-actions { gap: 10px; }
+  .base-page > header { flex-basis: 78px; }
+  .rhine-page-title { gap: 10px; }
+  .rhine-page-number { font-size: 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .layout *, .MuiDialog-root * { animation: none !important; transition: none !important; }
+  ::view-transition-group(rhine-page),
+  ::view-transition-old(rhine-page),
+  ::view-transition-new(rhine-page) { animation: none !important; }
+}
