@@ -37,9 +37,13 @@ export function completeVersion(assets, baseVersion, commit) {
 function main() {
   const run = (command, args) =>
     execFileSync(command, args, { encoding: 'utf8' }).trim()
-  const currentVersion = JSON.parse(readFileSync('package.json', 'utf8')).version
+  const currentVersion = JSON.parse(
+    readFileSync('package.json', 'utf8'),
+  ).version
   const baseVersion = currentVersion.split(/[+-]/)[0]
-  const fullCommit = run('bash', ['scripts-workflow/get_latest_tauri_commit.bash'])
+  const fullCommit = run('bash', [
+    'scripts-workflow/get_latest_tauri_commit.bash',
+  ])
   const commit = run('git', ['rev-parse', '--short', fullCommit])
   const date = new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Asia/Shanghai',
@@ -55,12 +59,20 @@ function main() {
     // API failures must fail this check rather than trigger expensive rebuilds.
     const releases = JSON.parse(
       run('gh', [
-        'api', '--paginate', '--slurp',
+        'api',
+        '--paginate',
+        '--slurp',
         `repos/${process.env.GITHUB_REPOSITORY}/releases?per_page=100`,
       ]),
     ).flat()
-    const release = releases.find((item) => item.tag_name === process.env.TAG_NAME)
-    publishedVersion = completeVersion(release?.assets ?? [], baseVersion, commit)
+    const release = releases.find(
+      (item) => item.tag_name === process.env.TAG_NAME,
+    )
+    publishedVersion = completeVersion(
+      release?.assets ?? [],
+      baseVersion,
+      commit,
+    )
   }
   const shouldRun = publishedVersion === null
   console.log(
@@ -74,6 +86,9 @@ function main() {
   )
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   main()
 }
